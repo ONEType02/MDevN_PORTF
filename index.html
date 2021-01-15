@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="keywords" content="портфолио, portfolio, личный сайт">
+        <meta name="description" content=".lιllιlιιl.">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="shortcut icon" href="layout/logo.png" type="image/x-icon">
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"> -->
+        <title>❊My Portfolio❊</title>
+
+        <!-- Шрифты -->
+        <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <link href="main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="loading">
+            <p>Загрузка</p>
+            <p class="d"><span>за</span><span>вер</span><span>шена</span></p>
+            <div class="h"></div>
+            <div class="loader">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <canvas id="bg"></canvas>
+        <section class="head container-fluid">
+            <div class="row">
+                <div class="photos col-12 col-sm-7">
+                    <div class="content">
+                        <img class="photo photo_hp hp1" src="content/1.jpg" alt="">
+                        <img class="photo photo_hp hp2" src="content/1.jpg" alt="">
+                        <span class="before anim_l"></span>
+                        <img class="photo photo_m" src="content/1.jpg" alt="">
+                        <span class="after anim_r"></span>
+                    </div>
+                </div>
+                <div class="description col-12 col-sm-5">
+                    <div class="info">
+                        <h1>Привет!</h1>
+                        <p class="msg"></p>
+                        <p class="change"></p>
+                    </div>
+                    <div class="stick"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="rot">
+                    <div class="arrow">
+                        <img src="content/arrow.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="nope"><span>Ч</span><span>т</span><span>о</span><pre>   </pre><span class="ya">я</span><pre>   </pre><span class="y">у</span><span>м</span><span>е</span><span>ю</span><span>?</span></div>
+        <article class="container-fluid dd">
+            <div class="row">
+                <div class="left col-5">
+                    <div class="buttons">
+                        <div class="button btn-1 active">
+                            <p>Адаптивная верстка</p>
+                        </div>
+                        <div class="button btn-2">
+                            <p>2D / 3D</p>
+                        </div>
+                        <div class="button btn-3">
+                            <p>Кроссбрауз.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="delimiter"></div>
+                <div class="right col-7">
+                    <div class="t">
+                        <h1>Адаптивная верстка</h1>
+                        <p>Корректное отображение сайта на любых устройствах</p>
+                    </div>
+                    <div class="use">
+                        <h4>Используемые технологии</h4>
+                        <p>[bootstrap]</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="hd">
+        <section class="works container-fluid">
+            <div class="row">
+                <div class="block block1" href="">
+                    <div class="trans trans1"></div>
+                    <img src="layout/ac.png" alt="">
+                    <div class="title">
+                        <p class="name">Project#3</p>
+                        <p class="date">03.07.20</p>
+                    </div>
+                    <div class="dop row">
+                        <div class="description col-8">
+                            <p>Информационный сайт по игре Assassins Creed</p>
+                        </div>
+                        <div class="frames col-4">
+                            <p class="j html"><span>HTML</span></p>
+                            <p class="j css"><span>CSS</span></p>
+                            <p class="j php"><span>PHP</span></p>
+                            <p class="j jq"><span>jQuery</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="block block2">
+                    <div class="trans trans2"></div>
+                    <img src="content/no.jpg">
+                </div>
+            </div>
+            <div class="row">
+                <div class="block block3">
+                    <div class="trans trans3"></div>
+                    <img src="content/no.jpg">
+                </div>
+            </div>
+            <!-- <img src="content/arrow.png" class="arrow"></img> -->
+            <!-- <div class="q">
+                <p>-</p>
+            </div> -->
+        </section>
+        <canvas id="bl" class="threed"></canvas>
+        <div class="landscape">
+            <img class="main" src="content/sunset.jpg">
+            <img class="part" src="content/particles.png">
+        </div>
+        <footer>
+            <p class="go">Свяжись со мной -></p>
+
+            <div class="rw">
+                <p class="email">E-mail: ilyaaasa71@gmail.com</p>
+                <div class="social">
+                    <a href="twitter.com" target="_blank" class="crcl twitter"><img src='layout/tw.png'></a>
+                    <a href="facebook.com" target="_blank" class="crcl facebook"><span>f</span></a>
+                </div>
+                <div class="social">
+                    <a href="http://vk.com" target="_blank" class="crcl vk"><span>VK</span></a>
+                    <a href="github.com" target="_blank" class="crcl github"><img src='layout/gh.png'></a>
+                </div>
+            </div>
+            <div class="grab"></div>
+        </footer>
+        </article>
+        <!-- <div class="cursor" id="cursor"></div> -->
+        <nav><div class="progress"></div></nav>
+
+        <!-- jQuery -->
+        <script src="plugins/jq.js"></script>
+
+        <script type="text/javascript" src="plugins/main.js"></script>
+
+        <!-- 3D -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.js" integrity="sha512-/kGR9IsoP6MadXPkWOuyvp84Ic3swcWcpij/bzrXe2qXwRQD3JAwKMCFX90ZgxOJ33+Jd7hYheF01XSJEalLsg==" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/three@0.87.1/examples/js/loaders/GLTFLoader.js"></script>
+        <script src="plugins/three/module.js"></script>
+        <script src="plugins/three/block.js"></script>
+
+        <script>
+            let head = document.querySelector('.head');
+            $(document).ready(function() {
+                setTimeout(() => {
+                    $('.loading p').css('transform', 'translateX(50vw)');
+                }, 2000);
+                setTimeout(() => {
+                    $('.loading p').css('text-shadow', 'none');
+                }, 2200);
+                setTimeout(() => {
+                    $('.d span:nth-child(2)').css('left', '40px');
+                    $('.d span:nth-child(3)').css('left', '110px');
+
+                    can = 0;
+                }, 2400);
+                setTimeout(() => {
+                    starting();
+                    head.scrollIntoView();
+                    $('.loading').remove();
+                    $('body').css('overflow-y', 'scroll');
+                    scene.background = new THREE.Color(0xFFFFFF);
+                    light.intensity = 2;
+                    renderer.render(scene, camera);
+                }, 3500);
+            });
+        </script>
+
+
+        <!-- Bootstrap scripts-->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <!-- REACT -->
+        <!-- <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> -->
+
+        <!-- SCROLL -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha512-HaoDYc3PGduguBWOSToNc0AWGHBi2Y432Ssp3wNIdlOzrunCtB2qq6FrhtPbo+PlbvRbyi86dr5VQx61eg/daQ==" crossorigin="anonymous"></script>
+
+    </body>
+</html>

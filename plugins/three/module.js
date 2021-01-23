@@ -129,6 +129,12 @@ function main() {
         else model.position.x = -1.8;
 
         light.updateMatrix();
+
+        if(screen.width <= 575) {
+            renderer.render(scene, camera);
+            return 1;
+        }
+
         model.updateMatrix();
 
         animate();

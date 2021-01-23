@@ -1,23 +1,17 @@
 let next = 1;
 let index = 1;
-const pageHeight = document.documentElement.scrollHeight;
 
-$('body').mousemove(function(e) {
-    $('.cursor').css('left', e.pageX - 25 + 'px');
-    $('.cursor').css('top', e.pageY - 25 + 'px');
-});
+// $('body').mousemove(function(e) { // cursor
+//     $('.cursor').css('left', e.pageX - 25 + 'px');
+//     $('.cursor').css('top', e.pageY - 25 + 'px');
+// });
 
-$(window).scroll(function() {
-    if(index === 2) return 1;
-    if(c > -5 && index === 3) {
-        $('.progress').width(35 + '%');
-        return 1;
-    }
-    if(c < -6 && index === 3) {
-        $('.progress').width(window.pageYOffset / 30 + 'vw');
-        return 1;
-    }
-    $('.progress').width(window.pageYOffset / 60 + '%');
+$(window).scroll(function() { // nav
+    let offset = window.pageYOffset || document.documentElement.scrollTop;
+    let windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+    let pageHeight = document.querySelector('footer').getBoundingClientRect().bottom;
+    $('.progress').width(Math.floor(offset / windowHeight * 100) + '%');
 });
 
 
@@ -159,10 +153,64 @@ $('.arrow').hover(function() {
 });
 
 
+
 $('.button').click(function changeinfo() {
-    // if(can === 0) return 1;
     $('.button').removeClass('active');
     $(this).addClass('active');
+
+    if(screen.width <= 575) {
+        if($('.btn-1').hasClass('active')) {
+            $('.mob1 .t h1').html('Адаптивная верстка');
+            $('.mob1 .t p').html('Корректное отображение сайта на любых устройствах');
+            $('.mob1 .use h4').html('Используемые технологии');
+            $('.mob1 .use p').replaceWith('<p style="color:magenta">[bootstrap]</p>');
+        }
+        if($('.btn-2').hasClass('active')) {
+            $('.mob1 .t h1').html('2D / 3D');
+            $('.mob1 .t p').html('Использование графического процессора для создания 3D на сайте');
+            $('.mob1 .use h4').html('Используемые технологии');
+            $('.mob1 .use p').replaceWith('<p style="color:green">[threeJS]</p>');
+        }
+        if($('.btn-3').hasClass('active')) {
+            $('.mob1 .t h1').html('Кроссбраузерность');
+            $('.mob1 .t p').html('Сайт выглядит в любом браузере одинаково');
+            $('.mob1 .use h4').replaceWith('<h4></h4>');
+            $('.mob1 .use p').replaceWith('<p style="color:gray">...</p>');
+        }
+
+        if($('.btn-4').hasClass('active')) {
+            $('.mob2 .t h1').html('JavaScript');
+            $('.mob2 .t p').html('В основе лежит JavaScript с использованием дополнительных технологий для ускорения работы');
+            $('.mob2 .use h4').html('Используемые технологии');
+            $('.mob2 .use p').replaceWith('<p style="color:blue">[jQuery, CoffeeScript, Ajax-запросы]</p>');
+        }
+        if($('.btn-5').hasClass('active')) {
+            $('.mob2 .t h1').html('Веб-приложения');
+            $('.mob2 .t p').html('Создание полноценного веб-приложения');
+            $('.mob2 .use h4').html('Используемые технологии');
+            $('.mob2 .use p').replaceWith('<p style="color:orange">[React, Angular, Vue]</p>');
+        }
+        if($('.btn-6').hasClass('active')) {
+            $('.mob2 .t h1').html('Анимации');
+            $('.mob2 .t p').html('Скрипты для работы с анимациями, скроллом и т.д.');
+            $('.mob2 .use h4').replaceWith('<h4></h4>');
+            $('.mob2 .use p').replaceWith('<p style="color:gray">...</p>');
+        }
+
+        if($('.btn-7').hasClass('active')) {
+            $('.mob3 .t h1').html('Сервер');
+            $('.mob3 .t p').html('Программирование полноценного сервера');
+            $('.mob3 .use h4').html('Используемые технологии');
+            $('.mob3 .use p').replaceWith('<p style="color:orange">[PHP, NodeJS]</p>');
+        }
+        if($('.btn-8').hasClass('active')) {
+            $('.mob3 .t h1').html('База данных');
+            $('.mob3 .t p').html('Программирование полноценной базы данных');
+            $('.mob3 .use h4').html('Используемые технологии');
+            $('.mob3 .use p').replaceWith('<p style="color:pink">[MySQL]</p>');
+        }
+        return 1;
+    }
 
     if(index === 1) {
         if($('.btn-1').hasClass('active')) {
@@ -223,25 +271,33 @@ let blockX = 0;
 let blockY = 0;
 let centerX = 0;
 let centerY = 0;
-$('.block').mousemove(function(event) {
+$('.block').mousemove(function(e) { // !!
+    if(screen.width < 575) return 1;
+
+    let width = $(this).innerWidth();
+    let height = $(this).innerHeight();
     let pos = $(this).offset();
     let elem_left = pos.left.toFixed(0);
 	let elem_top = pos.top.toFixed(0);
 	blockX = event.pageX - elem_left;
 	blockY = event.pageY - elem_top;
-    centerX = elem_left / 2;
-    centerY = elem_top / 2;
+    centerX = elem_left - (blockX / 2);
+    centerY = elem_top - (blockX / 2);
+    let resultX = blockX - (width / 2) - 45;
+    let resultY = blockY - (height / 2);
 
-    $(this).css('transform','skewX(' + (blockX - centerX) / 30 + 'deg) skewY(' + (centerY - blockY - 600) / 30 + 'deg)'); //
+    $(this).css('transform','skewX(' + resultX / 30 + 'deg) skewY(' + resultY / 30 + 'deg)');
+    if(screen.width >= 1440) $(this).css('transform','skewX(' + resultX / 50 + 'deg) skewY(' + resultY / 50 + 'deg)');
     $(this).css('transition','none');
-});
-$('.block2').mousemove(function(event) {
-    $(this).css('transform','skewX(' + (blockX - centerX  - 300) / 30 + 'deg) skewY(' + (centerY - blockY - 700) / 30 + 'deg)');
-});
-$('.block3').mousemove(function(event) {
-    $(this).css('transform','skewX(' + (blockX - centerX - 100) / 30 + 'deg) skewY(' + (centerY - blockY - 800) / 40 + 'deg)');
-});
+    // skewY(' + (centerY - blockY - 700) / 30 + 'deg)'
 
+});
+// $('.block2').mousemove(function(event) {
+//     $(this).css('transform','skewX(' + (blockX - centerX  - 300) / 30 + 'deg) skewY(' + (centerY - blockY - 700) / 30 + 'deg)');
+// });
+// $('.block3').mousemove(function(event) {
+//     $(this).css('transform','skewX(' + (blockX - centerX - 100) / 30 + 'deg) skewY(' + (centerY - blockY - 800) / 40 + 'deg)');
+// });
 
 $('.block').mouseout(function(event) {
     $(this).css('transition','transform 0.2s linear');
@@ -284,12 +340,12 @@ $('footer').mouseup(function() {
 
 $('footer').mousemove(function(event) {
     if(clk) {
-        wdt = document.documentElement.clientWidth - 200;
+        wdt = document.documentElement.clientWidth - 100;
         let pos = $('footer').offset();
         let elem_left = pos.left.toFixed(0);
         footerX = event.pageX - elem_left;
 
-        if(footerX < 400) footerX = 400;
+        if(footerX < 250) footerX = 250;
         if(footerX >= wdt) footerX = wdt;
 
         $('.grab').css('transform', 'translateX(' + footerX + 'px)');
@@ -309,6 +365,7 @@ let fscroll = 1;
 let c;
 const el = document.querySelector('.dd');
 $(window).scroll(function() { // My works
+    if(screen.width <= 575) return 1;
     if(can === 1) return 1;
 
     c = el.getBoundingClientRect().top;
@@ -330,6 +387,7 @@ $(window).scroll(function() { // My works
 });
 
 window.addEventListener('wheel', function(e) {
+    if(screen.width <= 575) return 1;
     if(can === 0) return 1;
 
     if((e.deltaY < 0 && index === 1) || (e.deltaY > 0 && index === 3)) {
@@ -362,28 +420,30 @@ window.addEventListener('wheel', function(e) {
         $('.right').addClass('rightchange');
 
         setTimeout(() => {
-            $('.right').css('background', 'url(content/m'+ index +'.png)');
+            $('.right').css('background', 'url(content/m'+ index +'.png) no-repeat');
+            $('.right').css('background-size', 'cover');
 
             $('.t').css('color', 'black');
+            $('.t p').css('color', 'black');
             $('.use').css('color', 'black');
 
             $('.t h1').html('Адаптивная верстка');
             $('.t p').html('Корректное отображение сайта на любых устройствах');
             $('.use h4').html('Используемые технологии');
             $('.use p').replaceWith('<p style="color:magenta">[bootstrap]</p>');
-        }, 1000);
+        }, 700);
 
         setTimeout(() => {
             $('.delimiter').css('transition', 'all 0.5s linear');
             $('.delimiter').removeClass('delchange');
-            $('.right').css('transition', 'all 1s linear');
+            $('.right').css('transition', 'all 0.5s linear');
             $('.right').removeClass('rightchange');
 
             $('.hd').css('display', 'none');
             $('.head').css('display', 'block');
             $('.nope').css('display', 'flex');
             el.scrollIntoView();
-        }, 2000);
+        }, 1000);
         can = 0;
     }
     if(next === 3) {
@@ -401,7 +461,8 @@ window.addEventListener('wheel', function(e) {
         $('.right').addClass('rightchange');
 
         setTimeout(() => {
-            $('.right').css('background', 'url(content/m'+ index +'.png)');
+            $('.right').css('background', 'url(content/m'+ index +'.png) no-repeat');
+            $('.right').css('background-size', 'cover');
 
             $('.t').css('color', 'white');
             $('.t p').css('color', 'black');
@@ -410,18 +471,18 @@ window.addEventListener('wheel', function(e) {
             $('.t p').html('Программирование полноценного сервера');
             $('.use h4').html('Используемые технологии');
             $('.use p').replaceWith('<p style="color:orange">[PHP, NodeJS]</p>');
-        }, 1000);
+        }, 700);
 
         setTimeout(() => {
             $('.delimiter').css('transition', 'all 0.5s linear');
             $('.delimiter').removeClass('delchange');
-            $('.right').css('transition', 'all 1s linear');
+            $('.right').css('transition', 'all 0.5s linear');
             $('.right').removeClass('rightchange');
 
             $('.head').css('display', 'none');
             $('.nope').css('display', 'none');
             $('.hd').css('display', 'block');
-        }, 2000);
+        }, 1000);
         can = 0;
     }
     if(next === 2) {
@@ -453,41 +514,45 @@ window.addEventListener('wheel', function(e) {
             $('.right').addClass('rightchange');
 
             setTimeout(() => {
-                $('.right').css('background', 'url(content/m'+ index +'.jpg)');
+                $('.right').css('background', 'url(content/m'+ index +'.jpg) no-repeat');
+                $('.right').css('background-size', 'cover');
 
                 $('.t').css('color', 'white');
-                $('.use h4').css('color', 'black');
+                $('.t p').css('color', 'white');
 
                 $('.t h1').html('JavaScript');
                 $('.t p').html('В основе лежит JavaScript с использованием дополнительных технологий для ускорения работы');
                 $('.use h4').html('Используемые технологии');
                 $('.use p').replaceWith('<p style="color:blue">[jQuery, CoffeeScript, Ajax-запросы]</p>');
-            }, 1000);
+            }, 700);
 
             setTimeout(() => {
                 $('.delimiter').css('transition', 'all 0.5s linear');
                 $('.delimiter').removeClass('delchange');
-                $('.right').css('transition', 'all 1s linear');
+                $('.right').css('transition', 'all 0.5s linear');
                 $('.right').removeClass('rightchange');
-            }, 2000);
+            }, 1000);
         can = 0;
 
         setTimeout(() => {
             can = 1;
-        }, 3000);
+        }, 1500);
     }
 });
 
 
-// TRANSITIONS
 function starting() {
-// Block 1
-    // photo
+    $('.progress').css('width','0');
+    $('footer .h').css('width', screen.width - 400 + 'px');
+
     let color = document.querySelector('.dd').getBoundingClientRect().top;
 
+    if(screen.width <= 575) $('.photo_m').css('visibility', 'visible');
+    if(screen.width > 575) {
     $('.before').addClass('change_l');
     $('.after').addClass('change_r');
     $('.photo_hp').addClass('change_photo');
+    }
     setTimeout(() => {
         $('.before').removeClass('change_l');
         $('.after').removeClass('change_r');
@@ -496,7 +561,6 @@ function starting() {
         tcan = 1;
     }, 3000);
 
-    // info
     $('.info h1').css('transform', 'translateY(0px)');
     $('.stick').css('transform', 'translateY(0px)');
     setTimeout(() => {
@@ -510,25 +574,28 @@ let worksplay = 0;
 let footerplay = 1;
 let calculate = 0;
 
+// TRANSITIONS
 $(window).scroll(function() {
     let head = document.querySelector('.head').getBoundingClientRect().top;
     let hd = document.querySelector('.hd').getBoundingClientRect().top;
-    if((head <= -700 && index === 1) || (hd >= 200 && index === 3)) { // What can I do? (есть ЛАГИ)
-        if(ddplay) return 1;
-        $('.nope span').css('transform', 'translateY(0)');
-        ddplay = 1;
-        $('.delimiter').css('transition', 'all 0.5s linear');
-        $('.delimiter').removeClass('delchange');
-        $('.right').css('transition', 'all 1s linear');
-        $('.right').removeClass('rightchange');
-    } else if((head >= -500 && index === 1) || (hd <= 0 & index === 3)) {
+    let n = document.querySelector('.nope').getBoundingClientRect().top;
+    if(n <= 100) $('.nope span').css('transform', 'translateY(0)');
+    if((n <= -100 && index === 1) || (hd >= 100 && index === 3)) { // What can I do? (есть ЛАГИ)
+        if(!ddplay) {
+            ddplay = 1;
+            $('.delimiter').css('transition', 'all 0.5s linear');
+            $('.delimiter').removeClass('delchange');
+            $('.right').css('transition', 'all 0.5s linear');
+            $('.right').removeClass('rightchange');
+        }
+    } else if((head >= -700 && index === 1) || (hd <= 0 & index === 3)) {
         ddplay = 0;
         $('.delimiter').css('transition', 'none');
         $('.delimiter').addClass('delchange');
         $('.right').css('transition', 'none');
         $('.right').addClass('rightchange');
     }
-    if(hd < screen.height + 300 && index === 3) { // Works
+    if(hd < screen.height + 1000 && index === 3) { // Works
         if(worksplay) return 1;
         worksplay = 1;
 
@@ -538,20 +605,12 @@ $(window).scroll(function() {
             $('.trans').css('transform', 'translateX(50%) scaleX(0)');
             $('.block img').css('visibility', 'visible');
         }, 1000);
-
     } else {
         $('.trans').css('transform', 'translateX(0) scaleX(1)');
         $('.trans').css('width', '0');
         $('.block img').css('visibility', 'hidden');
         worksplay = 0;
     }
-
-    // if(dd < -800 && index === 3) { // Quantity
-    //     if(!calculate) {
-    //         plusOne();
-    //         calculate = 1;
-    //     }
-    // }
 });
 
 
@@ -571,25 +630,24 @@ $(window).scroll(function() {
     // $('.block').css('transform', 'translate3d(0px, ' + -window.scrollY / 70  + 'px, 0px)');
 });
 
-// START
-let head = document.querySelector('.head');
-$(document).ready(function() {
-    setTimeout(() => {
-        $('.loading p').css('transform', 'translateX(50vw)');
-    }, 2000);
-    setTimeout(() => {
-        $('.loading p').css('text-shadow', 'none');
-    }, 2200);
-    setTimeout(() => {
-        $('.d span:nth-child(2)').css('left', '40px');
-        $('.d span:nth-child(3)').css('left', '110px');
 
-        can = 0;
-    }, 2400);
-    setTimeout(() => {
-        starting();
-        head.scrollIntoView();
-        $('.loading').remove();
-        $('body').css('overflow-y', 'scroll');
-    }, 3500);
+// MOBILE
+$(window).scroll(function() {
+    if(screen.width > 575) {
+        $('.mobile').hide();
+        $('.go').html('Свяжись со мной ->');
+    } else {
+        let bl1 = document.querySelector('.m1').getBoundingClientRect().top;
+        let bl2 = document.querySelector('.m2').getBoundingClientRect().top;
+        let bl3 = document.querySelector('.m3').getBoundingClientRect().top;
+        if(bl1 <= 200) index = 1;
+        if(bl2 <= 200) index = 2;
+        if(bl3 <= 200) index = 3;
+
+        $('.mobile').show();
+        $('.hd').css('display', 'block');
+        $('.nope').css('display', 'flex');
+
+        $('.go').html('ilyaaasa71@gmail.com');
+    }
 });

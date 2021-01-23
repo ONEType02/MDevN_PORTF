@@ -62,7 +62,7 @@
             </div>
         </section>
         <div class="nope"><span>Ч</span><span>т</span><span>о</span><pre>   </pre><span class="ya">я</span><pre>   </pre><span class="y">у</span><span>м</span><span>е</span><span>ю</span><span>?</span></div>
-        <article class="container-fluid dd">
+        <article class="container-fluid dd m1">
             <div class="row">
                 <div class="left col-5">
                     <div class="buttons">
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="delimiter"></div>
-                <div class="right col-7">
+                <div class="right mob1 col-7">
                     <div class="t">
                         <h1>Адаптивная верстка</h1>
                         <p>Корректное отображение сайта на любых устройствах</p>
@@ -90,9 +90,64 @@
                 </div>
             </div>
         </article>
-        <article class="hd">
-        <section class="works container-fluid">
+
+        <article class="container-fluid dd mobile m2">
             <div class="row">
+                <div class="left col-5">
+                    <div class="buttons">
+                        <div class="button btn-4 active">
+                            <p>JavaScript</p>
+                        </div>
+                        <div class="button btn-5">
+                            <p>Веб-приложения</p>
+                        </div>
+                        <div class="button btn-6">
+                            <p>Анимации</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="delimiter"></div>
+                <div class="right mob2 col-7">
+                    <div class="t">
+                        <h1>JavaScript</h1>
+                        <p>В основе лежит JavaScript с использованием дополнительных технологий для ускорения работы</p>
+                    </div>
+                    <div class="use">
+                        <h4>Используемые технологии</h4>
+                        <p>[jQuery, CoffeeScript, Ajax-запросы]</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="container-fluid dd mobile m3">
+            <div class="row">
+                <div class="left col-5">
+                    <div class="buttons">
+                        <div class="button btn-7 active">
+                            <p>Серверная часть</p>
+                        </div>
+                        <div class="button btn-8">
+                            <p>База данных</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="delimiter"></div>
+                <div class="right mob3 col-7">
+                    <div class="t">
+                        <h1>Сервер</h1>
+                        <p>Программирование полноценного сервера</p>
+                    </div>
+                    <div class="use">
+                        <h4>Используемые технологии</h4>
+                        <p>[PHP, NodeJS]</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="hd">
+        <section class="works">
+            <div class="hl">
                 <div class="block block1" href="">
                     <div class="trans trans1"></div>
                     <img src="layout/ac.png" alt="">
@@ -112,14 +167,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="block block2">
                     <div class="trans trans2"></div>
                     <img src="content/no.jpg">
                 </div>
-            </div>
-            <div class="row">
                 <div class="block block3">
                     <div class="trans trans3"></div>
                     <img src="content/no.jpg">
@@ -139,6 +190,7 @@
             <p class="go">Свяжись со мной -></p>
 
             <div class="rw">
+                <div class="h">
                 <p class="email">E-mail: ilyaaasa71@gmail.com</p>
                 <div class="social">
                     <a href="twitter.com" target="_blank" class="crcl twitter"><img src='layout/tw.png'></a>
@@ -148,6 +200,7 @@
                     <a href="http://vk.com" target="_blank" class="crcl vk"><span>VK</span></a>
                     <a href="github.com" target="_blank" class="crcl github"><img src='layout/gh.png'></a>
                 </div>
+            </div>
             </div>
             <div class="grab"></div>
         </footer>
@@ -169,6 +222,10 @@
         <script>
             let head = document.querySelector('.head');
             $(document).ready(function() {
+                if(screen.width > 575) { // Mobile
+                    $('.mobile').remove();
+                }
+
                 setTimeout(() => {
                     $('.loading p').css('transform', 'translateX(50vw)');
                 }, 2000);
@@ -176,8 +233,8 @@
                     $('.loading p').css('text-shadow', 'none');
                 }, 2200);
                 setTimeout(() => {
-                    $('.d span:nth-child(2)').css('left', '40px');
-                    $('.d span:nth-child(3)').css('left', '110px');
+                    $('.d span:nth-child(2)').css('left', '3vw');
+                    $('.d span:nth-child(3)').css('left', '8.3vw');
 
                     can = 0;
                 }, 2400);
